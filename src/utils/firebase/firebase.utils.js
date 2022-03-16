@@ -7,6 +7,8 @@ import {
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  signOut,
+  onAuthStateChanged,
 } from "firebase/auth"; //Auth
 
 import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore"; //DB
@@ -37,26 +39,25 @@ export const signInWithGoogleRedirect = () =>
 
 export const db = getFirestore();
 
-export const createUserDocumentFromAuth = async (userAuth, aditionalInformation={}) => {
-
+export const createUserDocumentFromAuth = async (
+  userAuth,
+  aditionalInformation = {}
+) => {
   if (!userAuth) return;
 
-
   const userDocRef = doc(db, "users", userAuth.uid);
-  console.log(userDocRef)
   const userSnapshot = await getDoc(userDocRef);
 
   if (!userSnapshot.exists()) {
     const { displayName, email } = userAuth;
     const createdAt = new Date();
 
-
     try {
       await setDoc(userDocRef, {
         displayName,
         email,
         createdAt,
-        ...aditionalInformation
+        ...aditionalInformation,
       });
     } catch (error) {
       console.log("error creating the user", error.message);
@@ -75,3 +76,7 @@ export const signAuthUserWithEmailAndPassword = async (email, password) => {
   return await signInWithEmailAndPassword(auth, email, password);
 };
 
+export const signOutUser = async () => await signOut(auth);
+
+export const onAuthStateChangedListener = (callback) =>
+  onAuthStateChanged(auth, callback); //is a listener that will excecute the callback function you pass to it whenever is a change in Auth state
