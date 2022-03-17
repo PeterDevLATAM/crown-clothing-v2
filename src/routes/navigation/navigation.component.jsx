@@ -9,7 +9,7 @@ import { signOutUser } from "../../utils/firebase/firebase.utils";
 import { ReactComponent as CrwnLogo } from "../../assets/crown.svg";
 
 import "./navigation.styles.scss";
-import CartItem from "../../components/cart-icon/cart-icon.component";
+import CartIcon from "../../components/cart-icon/cart-icon.component";
 import CartDropDown from "../../components/cart-dropdown/cart-dropdown.component";
 
 const Navigation = () => {
@@ -35,7 +35,7 @@ const Navigation = () => {
               SIGN IN
             </Link>
           )}
-          <CartItem />
+          <CartIcon />
         </div>
         {isCartOpen && <CartDropDown />}
       </div>

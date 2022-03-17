@@ -3,7 +3,7 @@ import { ReactComponent as ShopingIcon } from "../../assets/shopping-bag.svg";
 import { useContext } from "react";
 import { CartContext } from "../../context/cart.context";
 
-const CartItem = () => {
+const CartIcon = () => {
   const { setIsCartOpen, isCartOpen } = useContext(CartContext);
 
 
@@ -18,4 +18,4 @@ const CartItem = () => {
   );
 };
 
-export default CartItem;
+export default CartIcon;
