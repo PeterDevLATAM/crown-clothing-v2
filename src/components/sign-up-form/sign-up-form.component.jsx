@@ -22,7 +22,6 @@ const defaultFormFields = {
 export default function SignUpForm() {
   const { setCurrentUser } = useContext(UserContext);
 
-  console.log("hit");
   const [formFields, setFormFields] = useState(defaultFormFields);
 
   const { displayName, email, password, confirmPassword } = formFields;

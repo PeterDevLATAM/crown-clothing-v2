@@ -1,4 +1,3 @@
-import { async } from "@firebase/util";
 import { initializeApp } from "firebase/app";
 import {
   getAuth,
@@ -23,7 +22,7 @@ const firebaseConfig = {
   measurementId: "G-37VRYC7T2X",
 };
 
-const firebaseApp = initializeApp(firebaseConfig);
+initializeApp(firebaseConfig);
 
 const googleProvider = new GoogleAuthProvider();
 
