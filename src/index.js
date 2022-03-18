@@ -4,7 +4,7 @@ import { BrowserRouter } from "react-router-dom";
 
 import App from "./App";
 import { CartProvider } from "./context/cart.context";
-import { ProductsProvider } from "./context/product.context";
+import { CategoriesProvider } from "./context/categories.context";
 import { UserProvider } from "./context/user.context";
 
 import "./index.scss";
@@ -15,13 +15,13 @@ render(
   <React.StrictMode>
     <BrowserRouter>
       <UserProvider>
-        <ProductsProvider>
+        <CategoriesProvider>
           {/* Products provider will have acces to user state but not the other way around */}
           <CartProvider>
             {/* Cart context will have access to both user and products */}
             <App />
           </CartProvider>
-        </ProductsProvider>
+        </CategoriesProvider>
       </UserProvider>
     </BrowserRouter>
   </React.StrictMode>,
