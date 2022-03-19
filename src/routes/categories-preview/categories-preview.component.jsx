@@ -1,0 +1,27 @@
+import { CategoriesContext } from "../../context/categories.context";
+import { useContext } from "react";
+import CategoryPreview from "../../components/category-preview/category-preview.component";
+
+
+
+
+const CategoriesPreview = () => {
+  const { categoriesMap } = useContext(CategoriesContext);
+
+  console.log(categoriesMap);
+  return (
+    <>
+      { 
+        //Object.keys returns an array with the keys of the object
+        Object.keys(categoriesMap).map((title) => {
+          const products= categoriesMap[title]
+          return (
+            <CategoryPreview key={title} title={title} products={products} />
+          );
+        })
+      }
+    </>
+  );
+};
+
+export default CategoriesPreview;
